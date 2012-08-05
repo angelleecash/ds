@@ -11,8 +11,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{7C1C375E-3630-40E3-B50C-859A90458596}</ProjectGuid>
-    <RootNamespace>ds</RootNamespace>
+    <ProjectGuid>{2F12A9E6-3D49-494A-8C56-DA9D9D44A7C6}</ProjectGuid>
+    <RootNamespace>ds_test</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -60,12 +60,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="assert.h" />
-    <ClInclude Include="avl_tree.h" />
+    <ClCompile Include="..\avl_tree.cpp" />
+    <ClCompile Include="..\main.cpp" />
+    <ClCompile Include="avl_tree_test.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\xe\assert.cpp" />
-    <ClCompile Include="avl_tree.cpp" />
+    <ClInclude Include="..\avl_tree.h" />
+    <ClInclude Include="avl_tree_test.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
