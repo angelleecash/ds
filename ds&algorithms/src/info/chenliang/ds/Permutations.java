@@ -1,6 +1,7 @@
 package info.chenliang.ds;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Stack;
 
 public class Permutations {
@@ -10,7 +11,8 @@ public class Permutations {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		int[] a = {1, 2, 3, 4};
+		p(a, 2);
 	}
 
 	
@@ -41,6 +43,7 @@ public class Permutations {
 		
 		public int v, index, direction;
 		public static PermutationNumber[] numbers;
+		public static int[] a;
 		
 		public PermutationNumber(int v, int index, int direction)
 		{
@@ -54,9 +57,10 @@ public class Permutations {
 			this(number.v, number.index, number.direction);
 		}
 		
-		public static void init(PermutationNumber[] numbers)
+		public static void init(PermutationNumber[] numbers, int[] a)
 		{
 			PermutationNumber.numbers = numbers;
+			PermutationNumber.a = a;
 		}
 		
 		public boolean isMobile()
@@ -107,18 +111,6 @@ public class Permutations {
 		}
 	}
 	
-	private static boolean hasMobileNumbers(PermutationNumber[] numbers)
-	{
-		for (int i = 0; i < numbers.length; i++) {
-			if(numbers[i].isMobile())
-			{
-				return true;
-			}
-		}
-		
-		return false;
-	}
-	
 	private static PermutationNumber findLargestMobileNumber(PermutationNumber[] numbers)
 	{
 		PermutationNumber number = null;
@@ -140,7 +132,8 @@ public class Permutations {
 	{
 		for (int i = 0; i < numbers.length; i++) {
 			PermutationNumber number = numbers[i];
-			System.out.print(number.v + " ");
+			//System.out.print(number.v + " ");
+			System.out.print(PermutationNumber.a[number.v] + " ");
 		}
 		
 		System.out.println();
@@ -155,7 +148,7 @@ public class Permutations {
 			numbers[i] = number;
 		}
 		
-		PermutationNumber.init(numbers);
+		PermutationNumber.init(numbers, a);
 		
 		PermutationNumber largestMobile;
 		
@@ -181,4 +174,13 @@ public class Permutations {
 			printPermutation(numbers);
 		}
 	}
+	
+	public static void p(int[] a, int n)
+	{
+		List<int[]> result = Combinations.generateCombinations(a, 2);
+		for (int i = 0; i < result.size(); i++) {
+			generatePermutation(result.get(i));
+		}
+	}
+	
 }
