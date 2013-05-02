@@ -9,8 +9,22 @@ public class Kmp {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		/*
 		System.out.println(Arrays.toString(generateNext("abcdefg")));
+		System.out.println(Arrays.toString(generateNext2("abcdefg")));
+		
+		System.out.println();
+		System.out.println();
+		System.out.println();
+		
 		System.out.println(Arrays.toString(generateNext("abcabd")));
+		System.out.println(Arrays.toString(generateNext2("abcabd")));
+		*/
+		
+		String s = "abcdefg";
+		System.out.println(s.indexOf("q"));
+		System.out.println(indexOf(s, "q", 0));
+		
 	}
 	
 	private static int[] generateNext(String pattern)
@@ -21,11 +35,34 @@ public class Kmp {
 		int j = -1;
 		for(int i=1; i < pattern.length() ; i++)
 		{
-			while(j >= 0 && pattern.charAt(i) != pattern.charAt(j))
+			while(j >= 0 && pattern.charAt(i-1) != pattern.charAt(j))
 				j = next[j];
 			
 			j++;
 			next[i] = j;
+		}
+		
+		return next;
+	}
+	
+	private static int[] generateNext2(String pattern)
+	{
+		int[] next = new int[pattern.length()];
+		
+		next[0] = -1;
+		int j = -1;
+		int i=1;
+		while(i < pattern.length()-1)
+		{
+			if(j == -1 || pattern.charAt(i) == pattern.charAt(j))
+			{
+				i ++; j++;
+				next[i] = j;
+			}
+			else
+			{
+				j = next[j];
+			}
 		}
 		
 		return next;
