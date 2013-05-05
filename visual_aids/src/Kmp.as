@@ -46,7 +46,7 @@ package
 			var len:int = 0;
 			while(len < length)
 			{
-				result += String.fromCharCode(charBase + (int)(Math.random()*26));
+				result += String.fromCharCode(charBase + (int)(Math.random()*3));
 				len++;
 			}
 			
@@ -222,6 +222,7 @@ package
 		private function animate(target:Object, duration:Number, vars:Object):void
 		{
 			var onComplete:Function = vars.onComplete;
+			duration = .2;
 			var f:Function = function ():void
 							 {
 								if(onComplete)
@@ -239,7 +240,7 @@ package
 		
 		private function tweenAnimationDone():void
 		{
-			_tweenPause = 100;
+			_tweenPause = 800;
 			_tweenPausing = true;
 		}
 		
@@ -272,7 +273,7 @@ package
 			
 			var next:Vector.<int> = generateNext(pattern); 
 			
-			while(i < source.length && j < pattern.length)
+			while(i <= source.length - pattern.length && j < pattern.length)
 			{
 				if(j == -1 || source.charAt(i) == pattern.charAt(j))
 				{
@@ -281,9 +282,14 @@ package
 						i++;
 						j++;
 						
-						animate(sourceArrow, 1, {x:sourceMovieClip.x + i*_blockSize});
-						animate(patternArrow, 1, {x:sourceMovieClip.x + i*_blockSize});	
-						animate(patternMovieClip, 1, {x:sourceMovieClip.x + i*_blockSize});
+						if(i <= source.length - pattern.length)
+						{
+							animate(patternMovieClip, 0.2, {x:sourceMovieClip.x + i*_blockSize});
+							animate(sourceArrow, 0.2, {x:sourceMovieClip.x + i*_blockSize});
+							animate(patternArrow, 0.2, {x:sourceMovieClip.x + i*_blockSize});
+						}
+						
+						
 					}
 					else
 					{
@@ -315,6 +321,15 @@ package
 			return -1;	
 		}
 		
+		private function resetUi():void
+		{
+			
+			for(var i:int=numChildren-1 ;i >= 0 ;i--)
+			{
+				removeChildAt(i);
+			}
+		}
+		
 		private function onEnterFrame(event:Event):void
 		{
 			/*
@@ -343,7 +358,8 @@ package
 						
 						if(_tweenSteps.length <= 0)
 						{
-							
+							resetUi();
+							init();
 						}
 					}
 				}
