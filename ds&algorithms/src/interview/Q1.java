@@ -1,5 +1,7 @@
 package interview;
 
+import info.chenliang.ds.Util;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -263,9 +265,9 @@ public class Q1 {
 				List<Integer> result2 = new ArrayList<Integer>();
 				lrp2(tree.root, result2);
 				
-				Assert(result.size() == result2.size(), "shit");
+				Util.Assert(result.size() == result2.size(), "shit");
 				for (int j = 0; j < result.size(); j++) {
-					Assert(result.get(j).intValue() == result2.get(j).intValue(), "fuck");
+					Util.Assert(result.get(j).intValue() == result2.get(j).intValue(), "fuck");
 				}
 			}
 			
@@ -304,9 +306,9 @@ public class Q1 {
 				List<Integer> result2 = new ArrayList<Integer>();
 				lpr2(tree.root, result2);
 				
-				Assert(result.size() == result2.size(), "shit");
+				Util.Assert(result.size() == result2.size(), "shit");
 				for (int j = 0; j < result.size(); j++) {
-					Assert(result.get(j).intValue() == result2.get(j).intValue(), "fuck");
+					Util.Assert(result.get(j).intValue() == result2.get(j).intValue(), "fuck");
 				}
 			}
 			
@@ -345,9 +347,9 @@ public class Q1 {
 				List<Integer> result2 = new ArrayList<Integer>();
 				plr2(tree.root, result2);
 				
-				Assert(result.size() == result2.size(), "shit");
+				Util.Assert(result.size() == result2.size(), "shit");
 				for (int j = 0; j < result.size(); j++) {
-					Assert(result.get(j).intValue() == result2.get(j).intValue(), "fuck");
+					Util.Assert(result.get(j).intValue() == result2.get(j).intValue(), "fuck");
 				}
 			}
 			
@@ -382,16 +384,6 @@ public class Q1 {
 		
 		t = new Thread(new LrpTest());
 		t.start();
-	}
-	
-	
-	
-	public static void Assert(boolean flag, String message)
-	{
-		if(!flag)
-		{
-			throw new RuntimeException(message);
-		}
 	}
 
 }
