@@ -1,5 +1,7 @@
 package interview;
 
+import info.chenliang.ds.Queue;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
@@ -8,25 +10,6 @@ import java.util.Stack;
 
 public class Q4 {
 
-	static class Queue
-	{
-		List<Node> nodes = new ArrayList<Q4.Node>();
-		public void enter(Node n)
-		{
-			nodes.add(n);
-		}
-		
-		public Node leave()
-		{
-			return nodes.remove(0);
-		}
-		
-		public boolean isEmpty()
-		{
-			return nodes.size() <= 0;
-		}
-	}
-	
 	static class Node
 	{
 		int data;
@@ -100,7 +83,7 @@ public class Q4 {
 		
 		while(!q.isEmpty())
 		{
-			Node parent = q.leave();
+			Node parent = (Node)q.leave();
 			if(parent.data == n)
 			{
 				System.out.println("Found one");

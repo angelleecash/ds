@@ -4,31 +4,12 @@ import info.chenliang.ds.Util;
 
 public class Q3 {
 
-	public static int[] generateRandomArray(int n)
-	{
-		int[] a = new int[n];
-		
-		int c = 0;
-		while(n-- > 0)
-		{
-			a[c++] = generateRandomNumber();
-		}
-		
-		return a;
-	}
-	
-	public static int generateRandomNumber()
-	{
-		int sign = Math.random() >= 0.5 ? 1 : -1;
-		return sign * (int)(Math.random()*200);
-	}
-	
 	static class MaxSumTest implements Runnable {
 		public void run() {
 			
 			
 			for (int i = 0; i < 1000000; i++) {
-				int[] a = generateRandomArray(200);
+				int[] a = Util.generateRandomArray(200, 1000);
 				
 				long maxSum = Long.MIN_VALUE;
 				for (int j = 0; j < a.length; j++) {

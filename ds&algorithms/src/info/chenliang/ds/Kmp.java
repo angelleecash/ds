@@ -1,6 +1,5 @@
 package info.chenliang.ds;
 
-import java.util.Arrays;
 
 public class Kmp {
 
