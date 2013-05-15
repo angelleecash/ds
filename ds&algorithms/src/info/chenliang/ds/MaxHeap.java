@@ -10,8 +10,13 @@ public class MaxHeap {
 	
 	public MaxHeap(int[] a)
 	{
+		this(a, 0, a.length);
+	}
+	
+	public MaxHeap(int[] a, int offset, int n)
+	{
 		data = new ArrayList<Integer>();
-		for(int i=0; i < a.length;i ++)
+		for(int i=offset; i < offset+n;i ++)
 		{
 			data.add(a[i]);
 		}
@@ -36,7 +41,7 @@ public class MaxHeap {
 	
 	public int max()
 	{
-		return 0;
+		return data.get(0);
 	}
 	
 	private int parent(int i)

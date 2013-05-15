@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<actionScriptProperties analytics="false" mainApplicationPath="Kmp.as" projectUUID="052fc847-6933-4f10-a372-22226c8bbcf6" version="11">
+<actionScriptProperties analytics="false" mainApplicationPath="GenerateConvexHull.as" projectUUID="052fc847-6933-4f10-a372-22226c8bbcf6" version="11">
   <compiler additionalCompilerArguments="-locale zh_CN" advancedTelemetry="false" autoRSLOrdering="true" copyDependentFiles="true" fteInMXComponents="false" generateAccessible="true" htmlExpressInstall="true" htmlGenerate="false" htmlHistoryManagement="true" htmlPlayerVersionCheck="true" includeNetmonSwc="false" outputFolderPath="bin-debug" removeUnusedRSL="true" sourceFolderPath="src" strict="true" targetPlayerVersion="0.0.0" useApolloConfig="false" useDebugRSLSwfs="true" useFlashSDK="true" verifyDigests="true" warn="true">
     <compilerSourcePath/>
     <libraryPath defaultLinkType="0">
@@ -29,6 +29,8 @@
     <sourceAttachmentPath/>
   </compiler>
   <applications>
+    <application path="ClosestPoints.as"/>
+    <application path="GenerateConvexHull.as"/>
     <application path="Kmp.as"/>
   </applications>
   <modules/>

@@ -1,5 +1,6 @@
 package interview;
 
+import info.chenliang.ds.MaxHeap;
 import info.chenliang.ds.Util;
 
 import java.util.ArrayList;
@@ -144,6 +145,74 @@ public class Q5 {
 		
 	}
 	
+	
+	public static int[] kMin2(int[] a, int k)
+	{
+		Util.Assert(a.length >= k);
+		
+		MaxHeap heap = new MaxHeap(a, 0, k);
+		
+		for (int i = k; i < a.length; i++) {
+			int max = heap.max();
+			if(a[i] < max)
+			{
+				heap.getData().set(0, a[i]);
+				heap.maxHeapify(0);
+			}
+		}
+		
+		int[] result = new int[k];
+		for(int i=0; i < result.length; i++)
+		{
+			result[i] = heap.getData(i);
+		}
+		
+		return result;
+	}
+	
+	static class KMin2Test implements Runnable
+	{
+
+		@Override
+		public void run() {
+			// TODO Auto-generated method stub
+			for (int i = 0; i < 1000; i++) {
+				int[] a = Util.generateRandomArray(1000, 1000);
+				int[] b = new int[a.length];
+				for(int j=0; j < b.length; j++)
+				{
+					b[j] = a[j];
+				}
+				
+				Arrays.sort(b);
+				
+				for (int j = 1; j <= a.length; j++) {
+					int[] result = kMin2(a, j);
+					
+					List<Integer> l = new ArrayList<Integer>();
+					for(int k=0; k < j; k++)
+					{
+						l.add(b[k]);
+					}
+					
+					for(int k=0;k < result.length;k++)
+					{
+						int index = l.indexOf(result[k]);
+						
+						l.remove(index);
+						//l.remove(result[k]);
+					}
+					
+					Util.Assert(l.isEmpty(), "Shit");
+					
+				}
+			}
+			
+			System.out.println("kMin2(max heap) ok");
+		}
+		
+	}
+	
 	/**
 	 * @param args
 	 */
@@ -151,13 +220,16 @@ public class Q5 {
 		Thread t = null;
 		
 		t = new Thread(new PartitionTest());
-		t.start();
+		//t.start();
 		
 		t = new Thread(new kMinTest());
-		t.start();
+		//t.start();
 		
-		int[] a = {-13, -15, 2, 18, 24};
-		//partition(a, 0, a.length-1);
+		t = new Thread(new KMin2Test());
+		t.start();
+		//int[] a = Util.generateRandomArray(10, 20);
+		//int[] result = kMin2(a, 4);
+		
 	}
 
 }

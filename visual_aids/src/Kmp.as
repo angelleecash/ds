@@ -1,11 +1,9 @@
 package
 {
 	import flash.display.MovieClip;
-	import flash.display.Sprite;
-	import flash.events.Event;
 
-	[SWF(width="600",height="457",backgroundColor="#FFFFFF",frameRate="30")]
-	public class Kmp extends Sprite
+	
+	public class Kmp extends Base
 	{
 		private static const STATE_IDLE:int = 0;
 		private static const STATE_GENERATING_NEXT:int = 1;
@@ -25,19 +23,10 @@ package
 		
 		public function Kmp()
 		{
-			addEventListener(Event.ADDED_TO_STAGE, onAddedToStage);
-			stage.addChild(this);
 			
-//			var m:int = match("abcgkaddjfk", "addj", 0);
-//			trace(m);
 		}
 		
-		private function onAddedToStage(event:Event):void
-		{
-			addEventListener(Event.ENTER_FRAME, onEnterFrame);	
-
-			init();
-		}
+		
 		
 		private function generateRandomString(length:int):String
 		{
@@ -53,7 +42,7 @@ package
 			return result;
 		}
 		
-		private function init():void
+		override protected function init():void
 		{
 			var sourceLength:int = 18;
 			var patternLength:int = 5;
@@ -330,22 +319,8 @@ package
 			}
 		}
 		
-		private function onEnterFrame(event:Event):void
+		override protected function tick():void
 		{
-			/*
-			if(_state == STATE_IDLE)
-			{
-				tickIdle();		
-			}
-			else if(_state == STATE_GENERATING_NEXT)
-			{
-				tickGeneratingNext();
-			}
-			else if(_state == STATE_MATCHING)
-			{
-				tickMatching();
-			}
-			*/
 			if(_tweening)
 			{
 				if(_tweenPausing)
