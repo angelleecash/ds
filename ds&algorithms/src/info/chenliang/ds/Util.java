@@ -1,5 +1,8 @@
 package info.chenliang.ds;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class Util {
 	public static void Assert(boolean flag, String message)
 	{
@@ -26,6 +29,31 @@ public class Util {
 		}
 		
 		return a;
+	}
+	
+	public static int[] generateUnduplicatedRandomArray(int n, int max)
+	{
+		Set<Integer> set = new HashSet<Integer>();
+		
+		
+		while(set.size() < n)
+		{
+			int r = generateRandomNumber(max);
+			set.add(r);
+		}
+		
+		Integer[] result = new Integer[0];
+		result = set.toArray(result);
+		
+		Util.Assert(result.length == n);
+		
+		int[] ret = new int[n];
+		for(int i=0;i<n;i++)
+		{
+			ret[i] = result[i];
+		}
+		
+		return ret;
 	}
 	
 	public static int generateRandomNumber(int max)
